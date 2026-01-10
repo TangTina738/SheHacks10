@@ -18,46 +18,46 @@ def match_round():
     data = request.json or {}
     base_topic = data.get("topic", "animals")
     
-    # 1. Randomly pick a sub-category to force variety
     sub_categories = ["food", "colors", "shapes", "nature", "clothes", "toys", "school"]
     chosen_topic = random.choice(sub_categories) if base_topic == "random" else base_topic
-
-    # 2. Add a random seed number to the prompt to trick the AI's cache
     random_seed = random.randint(1, 10000)
 
+    # UPDATED: Prompt now asks for a BATCH of 5 items to improve speed
     prompt = f"""
-    Generate a UNIQUE French-English matching challenge for a kid (age 6-10).
+    Generate a LIST of 5 UNIQUE French-English matching challenges for a kid (age 6-10).
     Topic: {chosen_topic}
     Seed ID: {random_seed}
 
-    Rules:
-    - Pick a RANDOMLY different object every time. 
-    - Ensure the 4 options are English words.
-    - Return ONLY JSON:
-    {{
-      "challengeText": "A simple French noun",
-      "options": ["English word 1", "English word 2", "English word 3", "English word 4"],
-      "answerIndex": 0,
-      "hint": "A fun simple clue in English about the object"
-    }}
+    Return ONLY a JSON array of objects:
+    [
+      {{
+        "challengeText": "French word",
+        "options": ["English 1", "English 2", "English 3", "English 4"],
+        "answerIndex": 0,
+        "hint": "English clue"
+      }}
+    ]
     """
 
     try:
         response = client.models.generate_content(
-        model="gemini-2.0-flash",
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            # 3. Increase temperature for more "randomness"
-            temperature=1.0, 
-            top_p=0.95
+            model="gemini-2.5-flash", 
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+                temperature=1.0
             )
         )
-        return jsonify(json.loads(response.text))
-    except Exception as e:
-        print(f"Error calling Gemini: {e}") # Add this line to see the error!
-        return jsonify({"error": str(e)}), 500
+        
+        raw_text = response.text.strip()
+        if raw_text.startswith("```"):
+            raw_text = raw_text.split("```json")[-1].split("```")[0].strip()
+            
+        return jsonify(json.loads(raw_text))
     
+    except Exception as e:
+        print(f"!!! BACKEND ERROR !!!: {e}") 
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
