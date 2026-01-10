@@ -6,7 +6,7 @@ import './index.css'
 import App from './App.jsx'
 import Nav from './Nav.jsx'
 import Home from './Home.jsx'
-import Home2 from './Home2.jsx'
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
