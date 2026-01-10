@@ -1,17 +1,20 @@
-import { useState } from 'react'
-import './App.css'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+import Nav from "./Nav.jsx";
+import Home from "./Home.jsx";
+import Lesson1 from "./lesson1.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-    
-
-
-    </>
-  )
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/lesson1" element={<Lesson1 />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

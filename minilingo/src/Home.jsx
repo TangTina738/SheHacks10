@@ -1,7 +1,10 @@
 import "./Style/Home.css";
+import { Link } from "react-router-dom";
+
 
 import sunButton from "./assets/sunButton.png";
 import hillLight from "./assets/hillLight.png";
+
 
 import cloud1 from "./assets/cloud1.png";
 import cloud2 from "./assets/cloud2.png";
@@ -27,8 +30,11 @@ function Home() {
         </p>
 
         <div className="sun-wrap mt-3">
-          <img src={sunButton} alt="Start" className="sun-img" />
-        </div>
+            <Link to="/lesson1">
+                <img src={sunButton} alt="Start Lesson 1" className="sun-img" />
+            </Link>
+            </div>
+
       </section>
     </div>
   </div>
