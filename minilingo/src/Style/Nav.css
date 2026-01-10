@@ -1,0 +1,39 @@
+.site-header {
+  padding-top: 14px;   /* match Figma spacing */
+  padding-bottom: 20px;
+}
+
+/* Logo */
+.header-name {
+  font-family: var(--font-display);
+  color: #F6B91E;
+}
+
+
+/* Designer label */
+.header-designer {
+  font-family: "Archivo", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+}
+
+/* ABOUT */
+.nav-link-custom {
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
+  color: #70BC4F;
+  text-decoration: none;
+  margin-top: 6px; /* aligns text with logo top */
+}
+
+/* HOMEPAGE pill */
+.btn-homepage {
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
+  background: #F6B91E;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+}

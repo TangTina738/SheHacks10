@@ -1,0 +1,91 @@
+/* Style/Home.css */
+
+/* Sky */
+.home {
+  background-color: #87D8D2;
+  min-height: 100vh;
+}
+
+/* Bootstrap constrained scene */
+.home-scene {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Hills */
+.bg {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;           /* fits the Bootstrap container width */
+  height: auto;
+  pointer-events: none;
+}
+
+/* ⚠️ If your hill PNG has extra green above the curve,
+   this crops it so the sky shows. Adjust the 25%/35%. */
+.bg-hill-light {
+  bottom: -10vh;           /* starts lower */
+  z-index: 1;
+  clip-path: inset(25% 0 0 0);
+}
+
+.bg-hill-dark {
+  bottom: -80vh;         /* sits at bottom */
+  z-index: 0;
+  clip-path: inset(35% 0 0 0);
+}
+
+/* Clouds */
+.cloud {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  height: auto;
+}
+
+.cloud-left {
+  top: 42vh;
+  left: 0;
+  width: 220px;
+}
+
+.cloud-top {
+  top: 18vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+}
+
+.cloud-right {
+  top: 40vh;
+  right: 0;
+  width: 220px;
+}
+
+/* Content */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  width: min(560px, 92vw);
+  margin: 0 auto;
+  padding-top: 22vh;
+  text-align: left;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  color: #F4B11A;
+  font-size: clamp(44px, 6vw, 82px);
+  margin: 0 0 12px 0;
+  text-shadow: 0 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.hero-text {
+  font-family: var(--font-primary);
+  color: #0f0f0f;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0;
+}
