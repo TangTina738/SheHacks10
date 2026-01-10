@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
+import { useLocation, Link } from "react-router-dom"; 
 
 export default function Lesson1() {
+  const location = useLocation();
+  const currentTopic = location.state?.topic || "animals";
+
   const [round, setRound] = useState(null);
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
   
-  // Kids Game States
+  // Define missing states for kids' features
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [showHint, setShowHint] = useState(false);
@@ -18,54 +22,72 @@ export default function Lesson1() {
       const res = await fetch("http://localhost:5000/api/match-round", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ topic: "animals" }), 
+        body: JSON.stringify({ topic: currentTopic }), 
       });
+      
+      if (!res.ok) throw new Error("Server error");
+      
       const data = await res.json();
       setRound(data);
     } catch (err) {
-      setRound({ error: "Try again later!" });
+      console.error(err);
+      setRound({ error: "Magic took too long! Is your Python server running?" });
     } finally {
       setLoading(false);
     }
   }
 
-  useEffect(() => { loadRound(); }, []);
+  useEffect(() => { loadRound(); }, [currentTopic]);
 
   const handlePick = (i) => {
     if (status === "correct") return;
-
     if (i === round.answerIndex) {
       setStatus("correct");
       setScore(s => s + 10);
       setStreak(st => st + 1);
     } else {
       setStatus("wrong");
-      setStreak(0); // Reset streak on mistake
+      setStreak(0);
     }
   };
 
-  if (loading) return <div style={styles.center}>✨ Magic is happening... ✨</div>;
+  // 1. Prevents blank page by showing a loading screen
+  if (loading) return (
+    <div style={{ textAlign: 'center', padding: '100px', backgroundColor: '#87D8D2', height: '100vh' }}>
+      <h2 style={{ color: 'white', fontFamily: 'Sigmar One' }}>✨ Loading Magic... ✨</h2>
+    </div>
+  );
+
+  // 2. Error display
+  if (round?.error) return (
+    <div style={{ textAlign: 'center', padding: '50px' }}>
+      <p style={{ color: 'red' }}>{round.error}</p>
+      <button onClick={loadRound}>Try Again</button>
+    </div>
+  );
 
   return (
-    <main style={styles.container}>
-      {/* HUD (Heads Up Display) for Kids */}
-      <header style={styles.hud}>
-        <div style={styles.statBox}>⭐ Points: {score}</div>
-        <div style={styles.statBox}>🔥 Streak: {streak}</div>
-      </header>
+    <main style={{ backgroundColor: '#F0F2F5', minHeight: '100vh', padding: '20px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '20px' }}>
+        <div style={{ background: '#FF9F43', color: 'white', padding: '10px 20px', borderRadius: '15px' }}>⭐ {score}</div>
+        <div style={{ background: '#FF9F43', color: 'white', padding: '10px 20px', borderRadius: '15px' }}>🔥 {streak}</div>
+      </div>
 
-      <div style={styles.gameCard}>
-        <h2 style={styles.frenchWord}>{round?.challengeText}</h2>
+      <div style={{ backgroundColor: 'white', maxWidth: '500px', margin: '0 auto', borderRadius: '30px', padding: '40px', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '48px', color: '#2F3640' }}>{round?.challengeText}</h2>
         
-        <div style={styles.grid}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginTop: '30px' }}>
           {round?.options.map((opt, i) => (
             <button 
               key={i} 
               onClick={() => handlePick(i)}
               style={{
-                ...styles.choiceBtn,
+                padding: '20px',
+                fontSize: '20px',
+                borderRadius: '20px',
+                border: '2px solid #DCDDE1',
                 backgroundColor: status === "correct" && i === round.answerIndex ? "#4CD137" : "white",
-                transform: status === "wrong" && i !== round.answerIndex ? "scale(0.95)" : "scale(1)"
+                cursor: 'pointer'
               }}
             >
               {opt}
@@ -73,31 +95,14 @@ export default function Lesson1() {
           ))}
         </div>
 
-        <div style={styles.footer}>
-          {!showHint && status !== "correct" && (
-            <button onClick={() => setShowHint(true)} style={styles.hintBtn}>💡 Need a hint?</button>
-          )}
-          {showHint && <p style={styles.hintText}>{round?.hint}</p>}
-          
+        <div style={{ marginTop: '30px' }}>
           {status === "correct" && (
-            <button onClick={loadRound} style={styles.nextBtn}>Play Next! ➔</button>
+            <button onClick={loadRound} style={{ padding: '15px 30px', backgroundColor: '#487EB0', color: 'white', border: 'none', borderRadius: '50px', cursor: 'pointer' }}>
+              Next Word! ➔
+            </button>
           )}
         </div>
       </div>
     </main>
   );
 }
-
-const styles = {
-  container: { backgroundColor: '#F0F2F5', minHeight: '100vh', padding: '20px', fontFamily: '"Comic Sans MS", cursive, sans-serif' },
-  hud: { display: 'flex', justifyContent: 'space-around', marginBottom: '30px' },
-  statBox: { backgroundColor: '#FF9F43', color: 'white', padding: '10px 20px', borderRadius: '15px', fontWeight: 'bold', fontSize: '20px', boxShadow: '0 4px 0 #E67E22' },
-  gameCard: { backgroundColor: 'white', maxWidth: '500px', margin: '0 auto', borderRadius: '30px', padding: '40px', textAlign: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' },
-  frenchWord: { fontSize: '48px', color: '#2F3640', margin: '0 0 40px 0' },
-  grid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' },
-  choiceBtn: { padding: '20px', fontSize: '22px', border: '3px solid #DCDDE1', borderRadius: '20px', cursor: 'pointer', transition: '0.2s', fontWeight: 'bold', color: '#353B48' },
-  nextBtn: { marginTop: '30px', padding: '15px 40px', fontSize: '24px', backgroundColor: '#487EB0', color: 'white', border: 'none', borderRadius: '50px', cursor: 'pointer', boxShadow: '0 5px 0 #273C75' },
-  hintBtn: { background: 'none', border: 'none', color: '#7F8C8D', cursor: 'pointer', textDecoration: 'underline' },
-  hintText: { color: '#E67E22', fontWeight: 'bold', marginTop: '10px' },
-  center: { display: 'flex', height: '100vh', justifyContent: 'center', alignItems: 'center', fontSize: '30px', color: '#487EB0' }
-};

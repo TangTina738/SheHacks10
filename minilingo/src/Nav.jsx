@@ -1,6 +1,8 @@
 import "./Style/Nav.css";
+import { NavLink } from "react-router-dom";
 
-function Header() {
+
+function Nav() {
   return (
     <header className="site-header">
       <div className="container">
@@ -14,8 +16,18 @@ function Header() {
 
           {/* RIGHT: Nav */}
           <div className="col d-flex justify-content-end align-items-start">
-            <a className="nav-link-custom me-4" href="#about">ABOUT</a>
-            <a className="btn-homepage" href="#home">HOMEPAGE</a>
+             <NavLink
+                to="/"
+                className="nav-link-custom me-4"
+              >
+                ABOUT
+              </NavLink>
+              <NavLink
+                  to="/"
+                  className="btn-homepage"
+                >
+                  HOMEPAGE
+                </NavLink>
           </div>
 
         </div>
@@ -24,4 +36,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Nav;

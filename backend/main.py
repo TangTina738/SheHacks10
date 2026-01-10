@@ -44,18 +44,20 @@ def match_round():
 
     try:
         response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                response_mime_type="application/json",
-                # 3. Increase temperature for more "randomness"
-                temperature=1.0, 
-                top_p=0.95
+        model="gemini-2.0-flash",
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            response_mime_type="application/json",
+            # 3. Increase temperature for more "randomness"
+            temperature=1.0, 
+            top_p=0.95
             )
         )
         return jsonify(json.loads(response.text))
     except Exception as e:
+        print(f"Error calling Gemini: {e}") # Add this line to see the error!
         return jsonify({"error": str(e)}), 500
+    
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

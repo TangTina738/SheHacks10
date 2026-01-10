@@ -30,10 +30,10 @@ function Home() {
         </p>
 
         <div className="sun-wrap mt-3">
-            <Link to="/lesson1">
-                <img src={sunButton} alt="Start Lesson 1" className="sun-img" />
+            <Link to="/select-game">
+                <img src={sunButton} alt="Go to selection screen" className="sun-img" />
             </Link>
-            </div>
+        </div>
 
       </section>
     </div>
