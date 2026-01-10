@@ -1,0 +1,58 @@
+.home { background: #87D8D2; }
+
+.scene {
+  position: relative;
+  overflow: hidden;     /* hides cloud overflow cleanly */
+  min-height: 100vh;
+}
+
+.hero-wrap {
+  position: relative;
+  z-index: 2;           
+}
+
+
+/* hill pinned to bottom full width */
+.hill-wrap {
+  position: absolute;
+  left: 0;
+  bottom: -30vh;
+  width: 100%;
+  z-index: 0;
+}
+.hill-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* sun alignment */
+.sun-wrap { display: flex; justify-content: flex-start; }
+.sun-img  { width: 400px; height: auto; }
+
+/* Content */ 
+.hero-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;        
+  margin: 0;          
+  padding-top: 0;   
+  text-align: left;
+}
+
+ .hero-title { font-family: var(--font-display); 
+    color: #F4B11A; 
+    font-size: clamp(44px, 6vw, 82px);
+     margin: 0 0 12px 0; 
+     text-shadow: 0 10px 0 rgba(0, 0, 0, 0.12); } 
+
+ .hero-text { 
+    font-family: var(--font-primary); 
+    color: #0f0f0f; 
+    font-weight: 800; 
+    line-height: 1.15; 
+    margin: 0;}
+
+    .hero-col {
+  padding-top: 12vh;  /* tweak 8–14vh until it matches Figma */
+}
