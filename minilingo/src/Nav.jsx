@@ -8,7 +8,7 @@ function Nav() {
       <div className="container">
         <div className="row align-items-start">
 
-          {/* LEFT: Name + role */}
+          {/* LEFT: Nav*/}
           <div className="col-auto d-flex align-items-baseline">
             <h2 className="header-name m-0">MiniLingo</h2>
             <span className="header-designer ms-3">Mini Learners!</span>

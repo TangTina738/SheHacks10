@@ -21,12 +21,13 @@ export default function GameSelection() {
     <main className="selection-screen">
 
        <div style={{ position: "absolute", top: "20px", left: "50px", zIndex: 20 }}>
-  {/* The container handles the sliding animation */}
+
+  {/* BACK animation: Tina... kinda finicky*/}
   <div className="back-btn-container">
     <img
       src={Tree3}
       alt="Back to Home"
-      className="tree-back-img" /* The image handles the hover effect */
+      className="tree-back-img" 
       onClick={() => navigate("/")}
       style={{ 
         width: "70px", 
@@ -39,7 +40,8 @@ export default function GameSelection() {
       <h1 className="selection-title">Select Game to Play!</h1>
       
       <div className="floating-container">
-        {/* Each button gets a unique class for staggered positioning */}
+
+        {/* Game option buttons, ++ add more in future maybe? Curr, animals, food, colour */}
         <button className="circle-btn left" onClick={() => startGame("animals")}>🦁</button>
         <button className="circle-btn right" onClick={() => startGame("food")}>🍎</button>
         <button className="circle-btn bottom" onClick={() => startGame("colors")}>🎨</button>

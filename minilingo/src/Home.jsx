@@ -1,6 +1,6 @@
-import React, { useState } from "react"; // Added useState import
+import React, { useState } from "react"; 
 import "./Style/Home.css";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; // Don't forget to npm run this 2 connect
 import treeButton from "./assets/treeButton.png";
 
 // Asset imports
@@ -28,12 +28,13 @@ function Home() {
      { img: card5},
   ];
 
-// Triple the array to ensure there is always a buffer for seamless looping
+// Triple the array 2 ensure there is always a buffer for seamless looping
 const loopCards = [...cards, ...cards, ...cards]; 
 
 const nextCard = () => {
   setCurrentIndex((prev) => {
-    // If we reach the end of the original set, loop back to the start
+
+    // if reach the end of the origiaanl set, loop back to the start
     if (prev >= cards.length - 1) {
       return 0;
     }

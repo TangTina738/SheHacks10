@@ -9,7 +9,7 @@ export default function Lesson1() {
   const currentTopic = location.state?.topic || "animals";
 
   // Game Data States
-  const [queue, setQueue] = useState([]); // Stores the batch of 5 words
+  const [queue, setQueue] = useState([]); 
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -62,7 +62,7 @@ export default function Lesson1() {
     setShowHint(false);
     
     if (queue.length > 1) {
-      // Move to the next word locally (instant!)
+      // Move to the next word locally 
       setQueue(prev => prev.slice(1));
     } else {
       // If queue is empty, get 5 more from the server
@@ -80,7 +80,8 @@ export default function Lesson1() {
 
   return (
     <main style={styles.container}>
-      {/* BACK BUTTON */}
+
+      {/* Back Button Functionality: Anisa */}
       <div style={{ position: "absolute", top: "95px", left: "50px"}}>
         <img
           src={Tree3}
@@ -100,11 +101,15 @@ export default function Lesson1() {
           onMouseUp={(e) => e.target.style.transform = "translateY(-5px)"}
         />
       </div>
+
+      {/**I would style this here later for positioning - Anisa*/}
       <div style={styles.hud}>
         <div style={styles.statBox}>⭐ {score}</div>
         <div style={styles.statBox}>🔥 {streak}</div>
       </div>
 
+
+      {/*When user chooses the wrong answer */} 
       <div style={styles.gameCard}>
         <h2 style={styles.frenchWord}>{currentRound?.challengeText}</h2>
         <div style={styles.grid}>
@@ -113,12 +118,12 @@ export default function Lesson1() {
               style={{ ...styles.choiceBtn,
                 backgroundColor: 
                 status === "correct" && i === currentRound.answerIndex
-                ? "#4CD137" // green for correct pick
+                ? "#3ab627" 
                 : status === "wrong" && i === currentRound.answerIndex
-                ? "#4CD137" // green highlights correct answer even if wrong picked
+                ? "#4CD137" 
                 : status === "wrong" && i !== currentRound.answerIndex
-                ? "#E74C3C" // red for wrong pick
-                : "white",   // default color
+                ? "#E74C3C"
+                : "white",   // this is deeefault colour
                 
               }}>
               {opt}
