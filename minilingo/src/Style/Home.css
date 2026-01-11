@@ -9,7 +9,7 @@
 .hero-wrap {
   position: relative;
   z-index: 2;   
-  padding-bottom: 100px;        
+  padding-bottom: 90px;        
 }
 
 /* hill full width - now occupying space in the flow */
@@ -41,9 +41,8 @@
   font-family: var(--font-display); 
   color: #F4B11A; 
 
-  font-size: clamp(44px, 6vw, 82px);
-  margin: 0 0 12px 0; 
-  text-shadow: 0 5px 0 rgba(0, 0, 0, 0.12);
+  font-size: clamp(24px, 3.5vw, 48px);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.12);
   display: inline-block;
   animation: titleBounce 3s ease-in-out infinite; /* Keep your bounce animation */
 } 
@@ -55,13 +54,14 @@
   line-height: 1.15; 
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.12);
   margin: 0;
+  padding-top: 10px;
   /* Increased from clamp(16px, 2vw, 26px) for better readability */
   font-size: clamp(18px, 2.5vw, 30px);
 }
     
 
 .hero-col {
-  padding-top: 150px;  /* tweak 8–14vh until it matches Figma */
+  padding-top: 90px;  /* tweak 8–14vh until it matches Figma */
 }
 
 
@@ -216,18 +216,19 @@
   flex: 0 0 33.333%; 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Aligns them all to the top of the row */
+  padding: 0 10px;        /* Adds a little breathing room between cards */
+  height: 450px;          /* Set a fixed height for the container */
 }
 
-/* Prevents images from stretching */
 .card-slider-img {
-  width: auto;
-  max-width: 100%;
+  width: 100%;            /* Ensure image takes up the slot width */
+  max-width: 350px;       /* Keep cards from getting too huge */
   height: auto;
+  object-fit: contain;    /* Prevents stretching/distortion */
   filter: drop-shadow(0 15px 20px rgba(0,0,0,0.12)); 
   transition: transform 0.4s ease;
 }
-
 /* Tree Slider Button */
 .btn-tree-slider {
   background: none;
@@ -240,12 +241,7 @@
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-To create a playful, arrow-like pointing animation for your tree button, you can add a custom @keyframes that moves the button back and forth on the X-axis. This provides a clear visual hint to the student that clicking the tree will move the cards to the right.
 
-1. Updated Home.css
-Add this animation to your CSS file and apply it to the tree-btn-img.
-
-CSS
 
 /* 1. Define the pointing bounce animation */
 @keyframes pointRight {
