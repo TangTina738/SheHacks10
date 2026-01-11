@@ -41,9 +41,8 @@
   font-family: var(--font-display); 
   color: #F4B11A; 
 
-  font-size: clamp(44px, 6vw, 82px);
-  margin: 0 0 12px 0; 
-  text-shadow: 0 5px 0 rgba(0, 0, 0, 0.12);
+  font-size: clamp(28px, 4vw, 56px);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.12);
   display: inline-block;
   animation: titleBounce 3s ease-in-out infinite; /* Keep your bounce animation */
 } 
@@ -55,6 +54,7 @@
   line-height: 1.15; 
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.12);
   margin: 0;
+  padding-top: 10px;
   /* Increased from clamp(16px, 2vw, 26px) for better readability */
   font-size: clamp(18px, 2.5vw, 30px);
 }
@@ -216,18 +216,19 @@
   flex: 0 0 33.333%; 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Aligns them all to the top of the row */
+  padding: 0 10px;        /* Adds a little breathing room between cards */
+  height: 450px;          /* Set a fixed height for the container */
 }
 
-/* Prevents images from stretching */
 .card-slider-img {
-  width: auto;
-  max-width: 100%;
+  width: 100%;            /* Ensure image takes up the slot width */
+  max-width: 350px;       /* Keep cards from getting too huge */
   height: auto;
+  object-fit: contain;    /* Prevents stretching/distortion */
   filter: drop-shadow(0 15px 20px rgba(0,0,0,0.12)); 
   transition: transform 0.4s ease;
 }
-
 /* Tree Slider Button */
 .btn-tree-slider {
   background: none;
