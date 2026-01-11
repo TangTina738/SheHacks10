@@ -8,4 +8,5 @@ The app helps young learners build vocabulary through an engaging, gamified form
 🚀 Getting Started
 
 npm install
+
 npm run dev
