@@ -71,7 +71,7 @@ export default function Lesson1() {
   };
 
   if (loading && queue.length === 0) return (
-    <div style={styles.fullCenter}><h2>✨ Preparing your adventure... ✨</h2></div>
+    <div style={styles.fullCenter}><h2>✨ Getting ready to play… ✨</h2></div>
   );
 
   if (error) return (
@@ -143,7 +143,7 @@ export default function Lesson1() {
 
 const styles = {
   container: { backgroundColor: '#87D8D2', minHeight: '100vh', padding: '20px' },
-  fullCenter: { display: 'flex', flexDirection: 'column', height: '100vh', justifyContent: 'center', alignItems: 'center', color: 'white' },
+  fullCenter: { backgroundColor: '#87D8D2', display: 'flex', flexDirection: 'column', height: '100vh', justifyContent: 'center', alignItems: 'center', color: '#2F3640', fontFamily: 'var(--font-display)',},
   hud: { display: 'flex', justifyContent: 'space-around', marginBottom: '20px' },
   statBox: { background: '#FF9F43', color: 'white', padding: '10px 25px', borderRadius: '20px', fontWeight: 'bold', fontSize: '24px' },
   gameCard: { backgroundColor: 'white', maxWidth: '500px', margin: '0 auto', borderRadius: '30px', padding: '40px', textAlign: 'center' },
