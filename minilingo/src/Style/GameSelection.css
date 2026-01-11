@@ -77,7 +77,7 @@
   position: relative; /* Change from absolute to relative */
   width: 100%;
   z-index: 2; /* Sits above the background color, below the text */
-  margin-top: -30vh; /* Keeps it overlapping the sky slightly for the "horizon" look */
+  margin-top: -10vh; /* Keeps it overlapping the sky slightly for the "horizon" look */
   line-height: 0; /* Prevents tiny gaps at the bottom of images */
 }
 
@@ -97,13 +97,12 @@
 }
 .tree-img-2 {
   position: absolute;
-  bottom: 80%;     /* slightly above bottom of hill-wrap */
+  bottom:80%;     /* slightly above bottom of hill-wrap */
   left: 20%;
   transform: translateX(-50%);
   width: 80px;
   height: 120px;
   z-index: 10;     /* above hill and clouds for testing */
-  border: 2px solid red; 
 }
 
 .fill {

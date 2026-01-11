@@ -30,9 +30,9 @@ export default function GameSelection() {
       <div className="hill-wrap">
         <img src={hillLight} alt="" className="hill-img" />
         <img src={Tree1} alt="" className="tree-img" />
+        <img src={Tree2} alt="" className="tree-img-2" />
       </div>
 
-      /* Absolute Cloud Layer: Individually positioned to match design grid */
         <div className="cloud-container">
            {/* Cloud 2: span 1-2 */}
           <img src={cloud2} alt="" className="cloud cloud-pos-2" />
