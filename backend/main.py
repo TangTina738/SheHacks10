@@ -16,7 +16,7 @@ CORS(app)
 @app.route("/api/match-round", methods=["POST"])
 def match_round():
     data = request.json or {}
-    base_topic = data.get("topic", "animals")
+    base_topic = data.get("topic")
     
     sub_categories = ["food", "colors", "shapes", "nature", "clothes", "toys", "school"]
     chosen_topic = random.choice(sub_categories) if base_topic == "random" else base_topic
@@ -52,7 +52,7 @@ def match_round():
         raw_text = response.text.strip()
         if raw_text.startswith("```"):
             raw_text = raw_text.split("```json")[-1].split("```")[0].strip()
-            
+        
         return jsonify(json.loads(raw_text))
     
     except Exception as e:
