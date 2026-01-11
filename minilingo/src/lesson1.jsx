@@ -20,7 +20,7 @@ export default function Lesson1() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("http://localhost:5000/api/match-round", {
+      const res = await fetch("http://127.0.0.1:5000/api/match-round", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ topic: currentTopic }), 
