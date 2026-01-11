@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom"; 
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
+import Tree3 from "./assets/Tree3.png";
 
 export default function Lesson1() {
   const location = useLocation();
+  const navigate = useNavigate();
   const currentTopic = location.state?.topic || "animals";
 
   // Game Data States
@@ -13,6 +16,7 @@ export default function Lesson1() {
   
   // Student Progress States
   const [score, setScore] = useState(0);
+  const [backBtnPressed, setBackBtnPressed] = useState(false);
   const [streak, setStreak] = useState(0);
   const [showHint, setShowHint] = useState(false);
 
@@ -76,6 +80,26 @@ export default function Lesson1() {
 
   return (
     <main style={styles.container}>
+      {/* BACK BUTTON */}
+      <div style={{ position: "absolute", top: "95px", left: "50px"}}>
+        <img
+          src={Tree3}
+          alt="Back"
+          onClick={() => {
+            setBackBtnPressed(true);
+            setTimeout(() => {
+              navigate("/select-game");
+            }, 150);
+          }}
+          style={{ width: "70px", height: "70px", cursor: "pointer", 
+            transition: "transform 0.15s ease"
+           }}
+           onMouseEnter={(e) => e.target.style.transform = "translateY(-5px)"}
+           onMouseLeave={(e) => e.target.style.transform = "translateY(0)"}
+          onMouseDown={(e) => e.target.style.transform = "translateY(2px) scale(0.95)"}
+          onMouseUp={(e) => e.target.style.transform = "translateY(-5px)"}
+        />
+      </div>
       <div style={styles.hud}>
         <div style={styles.statBox}>⭐ {score}</div>
         <div style={styles.statBox}>🔥 {streak}</div>
