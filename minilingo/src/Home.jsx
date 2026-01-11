@@ -15,6 +15,7 @@ import card1 from "./assets/card1.png";
 import card2 from "./assets/card2.png";
 import card3 from "./assets/card3.png";
 import card4 from "./assets/card4.png";
+import card5 from "./assets/card5.png";
 
 function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,6 +25,7 @@ function Home() {
     { img: card2},
     { img: card3 },
     { img: card4},
+     { img: card5},
   ];
 
 // Triple the array to ensure there is always a buffer for seamless looping
@@ -53,11 +55,11 @@ const nextCard = () => {
           <div className="row">
             <div className="col-md-5 offset-md-4 hero-col">
               <section className="hero-content">
-                <h1 className="hero-title">MINILINGO</h1>
+                <h1 className="hero-title">Helping little learners on their language journey.</h1>
                 <p className="hero-text">
-                  Assist <br />
-                  Ready to learn some French? <br />
-                  Click the sun to begin!
+                 Ready to play and learn? <br>
+                 </br> 
+                 Click the sun to start!
                 </p>
               </section>
             </div>
