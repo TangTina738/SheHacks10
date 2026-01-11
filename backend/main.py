@@ -24,7 +24,7 @@ def match_round():
 
     # UPDATED: Prompt now asks for a BATCH of 5 items to improve speed
     prompt = f"""
-    Generate a LIST of 5 UNIQUE French-English matching challenges for a kid (age 6-10).
+    Generate a LIST of 20 UNIQUE French-English matching challenges for a kid (age 6-10).
     Topic: {chosen_topic}
     Seed ID: {random_seed}
 

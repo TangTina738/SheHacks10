@@ -87,7 +87,15 @@ export default function Lesson1() {
           {currentRound?.options.map((opt, i) => (
             <button key={i} onClick={() => handlePick(i)}
               style={{ ...styles.choiceBtn,
-                backgroundColor: status === "correct" && i === currentRound.answerIndex ? "#4CD137" : "white"
+                backgroundColor: 
+                status === "correct" && i === currentRound.answerIndex
+                ? "#4CD137" // green for correct pick
+                : status === "wrong" && i === currentRound.answerIndex
+                ? "#4CD137" // green highlights correct answer even if wrong picked
+                : status === "wrong" && i !== currentRound.answerIndex
+                ? "#E74C3C" // red for wrong pick
+                : "white",   // default color
+                
               }}>
               {opt}
             </button>
@@ -100,7 +108,7 @@ export default function Lesson1() {
           )}
           {showHint && <p style={styles.hintText}>{currentRound?.hint}</p>}
           
-          {status === "correct" && (
+          {status !== null && (
             <button onClick={handleNext} style={styles.nextBtn}>Next Word! ➔</button>
           )}
         </div>
