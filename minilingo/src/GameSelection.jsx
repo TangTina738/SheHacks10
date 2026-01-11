@@ -21,27 +21,27 @@ export default function GameSelection() {
     <main className="selection-screen">
 
        <div style={{ position: "absolute", top: "20px", left: "50px", zIndex: 20 }}>
-        <img
-          src={Tree3}
-          alt="Back to Home"
-          onClick={() => navigate("/")}
-          style={{ 
-            width: "70px", 
-            height: "70px", 
-            cursor: "pointer",
-            transition: "transform 0.2s ease"
-          }}
-          onMouseEnter={(e) => e.target.style.transform = "translateY(-5px)"}
-          onMouseLeave={(e) => e.target.style.transform = "translateY(0)"}
-          onMouseDown={(e) => e.target.style.transform = "translateY(2px) scale(0.95)"}
-          onMouseUp={(e) => e.target.style.transform = "translateY(-5px)"}
-        />
-      </div>
-      
+
+  {/* BACK animation: Tina... kinda finicky*/}
+  <div className="back-btn-container">
+    <img
+      src={Tree3}
+      alt="Back to Home"
+      className="tree-back-img" 
+      onClick={() => navigate("/")}
+      style={{ 
+        width: "70px", 
+        height: "70px", 
+        cursor: "pointer" 
+      }}
+    />
+  </div>
+</div>
       <h1 className="selection-title">Select Game to Play!</h1>
       
       <div className="floating-container">
-        {/* Each button gets a unique class for staggered positioning */}
+
+        {/* Game option buttons, ++ add more in future maybe? Curr, animals, food, colour */}
         <button className="circle-btn left" onClick={() => startGame("animals")}>🦁</button>
         <button className="circle-btn right" onClick={() => startGame("food")}>🍎</button>
         <button className="circle-btn bottom" onClick={() => startGame("colors")}>🎨</button>

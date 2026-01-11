@@ -12,13 +12,13 @@
   padding-bottom: 90px;        
 }
 
-/* hill full width - now occupying space in the flow */
+/*Do not edit hill wrap plz*/
 .hill-wrap {
-  position: relative; /* Change from absolute to relative */
+  position: relative; 
   width: 100%;
-  z-index: 2; /* Sits above the background color, below the text */
-  margin-top: -30vh; /* Keeps it overlapping the sky slightly for the "horizon" look */
-  line-height: 0; /* Prevents tiny gaps at the bottom of images */
+  z-index: 2; 
+  margin-top: -30vh;
+  line-height: 0; 
 }
 
 .hill-img {
@@ -55,42 +55,33 @@
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.12);
   margin: 0;
   padding-top: 10px;
-  /* Increased from clamp(16px, 2vw, 26px) for better readability */
   font-size: clamp(18px, 2.5vw, 30px);
 }
     
 
 .hero-col {
-  padding-top: 90px;  /* tweak 8–14vh until it matches Figma */
+  padding-top: 90px;  
 }
 
-
-/* Style/Home.css */
-
 .scene {
-  position: relative; /* Required for absolute children to align correctly */
+  position: relative;
   overflow: hidden;
 }
 
 .cloud-layer {
-  position: absolute; /* Takes clouds out of the flow so they don't shift text */
-  top: 10%; /* Adjust vertical placement here */
+  position: absolute; 
+  top: 10%; 
   left: 0;
   right: 0;
-  z-index: 1; /* Sits behind the hero content */
-  pointer-events: none; /* Crucial: allows you to click buttons behind the clouds */
+  z-index: 1; 
+  pointer-events: none; 
 }
 
 .hero-wrap {
   position: relative;
-  z-index: 2; /* Ensures text and buttons stay on top of clouds */
+  z-index: 2; 
 }
-/* Position clouds without shifting hero text */
-.scene {
-  position: relative;
-  overflow: hidden;
-  min-height: 100vh;
-}
+
 
 .cloud-container {
   position: absolute;
@@ -98,17 +89,16 @@
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Allows user to click buttons behind clouds */
+  pointer-events: none;
   z-index: 1;
 }
 
 .cloud {
   position: absolute;
   height: auto;
-  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1)); /* Matches image shadow style */
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1)); 
 }
 
-/* Specific placements based on your 12-column grid request */
 .cloud-pos-2 { /* Columns 1-2 */
   width: 15%;
   left: 5%;
@@ -137,7 +127,7 @@
   z-index: 10; /* Keeps text above clouds */
 }
 
-/* Animation for the clouds */
+/* Animation for the clouds --> use on other homepages if u want */
 @keyframes drift {
   0% { transform: translateX(0); }
   50% { transform: translateX(15px); }
@@ -148,11 +138,9 @@
   position: absolute;
   height: auto;
   filter: drop-shadow(0 10px 15px rgba(0,0,0,0.08));
-  /* Apply the animation */
   animation: drift 6s ease-in-out infinite; 
 }
 
-/* Stagger the start times so they don't move in perfect sync */
 .cloud-pos-1 { animation-delay: 0s; }
 .cloud-pos-2 { animation-delay: 1.5s; }
 .cloud-pos-3 { animation-delay: 3s; }
@@ -167,22 +155,20 @@
 }
 
 .sun-img { 
-  /* Setting width to max-content ensures it uses the image's original width */
   width: max-content; 
   height: auto; 
   cursor: pointer;
   
-  /* Keep your existing smooth transition for the hover rise effect */
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
 }
 
-/* Maintain your soft joyful hover effect */
+
 .sun-img:hover {
   transform: translateY(-15px) scale(1.02); 
   filter: drop-shadow(0 0 15px rgba(244, 177, 26, 0.6)); 
 }
 
-/* 3. Press Effect: Slightly shrink when clicked */
+
 .sun-img:active {
   transform: translateY(-5px) scale(0.98);
 }
@@ -190,45 +176,46 @@
 
 
 .about-section {
-  background-color: #3C7A20; /* Dark green */
+  background-color: #3C7A20; 
   padding: 100px 0;
   position: relative;
   z-index: 1; 
-  /* Removing absolute positioning from the hill allows this to sit under it naturally */
 }
 
-/* Container to hide images as they slide out */
+
 .overflow-hidden {
   overflow: hidden;
   padding: 60px 0;
   width: 100%;
 }
 
-/* Horizontal track logic */
+
 .card-slider-track {
   display: flex;
   align-items: center;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Each slot occupies 1/3 of the container width */
+
 .slider-item {
   flex: 0 0 33.333%; 
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Aligns them all to the top of the row */
-  padding: 0 10px;        /* Adds a little breathing room between cards */
-  height: 450px;          /* Set a fixed height for the container */
+  align-items: flex-start; 
+  padding: 0 10px;       
+  height: 450px;         
 }
 
+/*Do not edit too plz*/
 .card-slider-img {
-  width: 100%;            /* Ensure image takes up the slot width */
+  width: 100%;            
   max-width: 350px;       /* Keep cards from getting too huge */
   height: auto;
   object-fit: contain;    /* Prevents stretching/distortion */
   filter: drop-shadow(0 15px 20px rgba(0,0,0,0.12)); 
   transition: transform 0.4s ease;
 }
+
 /* Tree Slider Button */
 .btn-tree-slider {
   background: none;

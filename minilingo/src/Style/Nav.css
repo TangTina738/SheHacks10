@@ -1,5 +1,5 @@
 .site-header {
-  padding-top: 14px;   /* match Figma spacing */
+  padding-top: 14px;   
   padding-bottom: 20px;
 }
 
@@ -10,7 +10,7 @@
 }
 
 
-/* Designer label */
+
 .header-designer {
   font-family: "Archivo", sans-serif;
   font-size: 14px;
@@ -24,11 +24,11 @@
   font-weight: 700;
   color: #70BC4F;
   text-decoration: none;
-  margin-top: 8px; /* aligns text with logo top */
+  margin-top: 8px; 
   padding-right: 4px;
 }
 
-/* HOMEPAGE pill */
+
 .btn-homepage {
   font-family: "Archivo", sans-serif;
   font-weight: 700;
@@ -41,28 +41,26 @@
 
 /* ABOUT link hover */
 .nav-link-custom {
-  /* ... existing styles ... */
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
-  display: inline-block; /* Required for transform */
+  display: inline-block; 
 }
 
 .nav-link-custom:hover {
-  color: #87D8D2; /* Soft teal change */
-  transform: scale(1.1) rotate(-2deg); /* Slight joyful tilt */
+  color: #87D8D2; 
+  transform: scale(1.1) rotate(-2deg); 
 }
 
-/* HOMEPAGE pill hover */
+/* HOMEPAGE pill hover... TO ADD MORE HOVERS SEARCH ON GOOGLE/PLAYAROUND */
 .btn-homepage {
-  /* ... existing styles ... */
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: inline-block;
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1); /* Subtle "3D" bottom shadow */
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 .btn-homepage:hover {
-  background: #FFD32A; /* Brighten the yellow */
+  background: #FFD32A; 
   transform: translateY(-3px) scale(1.05); /* Soft rise */
-  box-shadow: 0 8px 15px rgba(246, 185, 30, 0.3); /* Joyful glow */
+  box-shadow: 0 8px 15px rgba(246, 185, 30, 0.3); 
   color: white;
 }
 
