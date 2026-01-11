@@ -97,12 +97,21 @@
 }
 .tree-img-2 {
   position: absolute;
-  bottom:80%;     /* slightly above bottom of hill-wrap */
-  left: 20%;
+  bottom: 65%;     /* slightly above bottom of hill-wrap */
+  left: 9%;
   transform: translateX(-50%);
   width: 80px;
-  height: 120px;
+  height: 110px;
   z-index: 10;     /* above hill and clouds for testing */
+}
+.tree-img-4 {
+  position: absolute;
+  bottom: 0%;     /* slightly above bottom of hill-wrap */
+  right: 9%;
+  width: 80px;
+  height: 130px;
+  z-index: 10;     /* above hill and clouds for testing */
+  background-color: red; /
 }
 
 .fill {

@@ -7,7 +7,8 @@ import cloud3 from "./assets/cloud3.png";
 import cloud4 from "./assets/cloud4.png";
 import Tree1 from "./assets/Tree1.png";
 import Tree2 from "./assets/Tree2.png";
-
+import Tree4 from "./assets/Tree4.png";
+import Tree3 from "./assets/Tree3.png";
 
 export default function GameSelection() {
   const navigate = useNavigate();
@@ -18,6 +19,25 @@ export default function GameSelection() {
 
   return (
     <main className="selection-screen">
+
+       <div style={{ position: "absolute", top: "20px", left: "50px", zIndex: 20 }}>
+        <img
+          src={Tree3}
+          alt="Back to Home"
+          onClick={() => navigate("/")}
+          style={{ 
+            width: "70px", 
+            height: "70px", 
+            cursor: "pointer",
+            transition: "transform 0.2s ease"
+          }}
+          onMouseEnter={(e) => e.target.style.transform = "translateY(-5px)"}
+          onMouseLeave={(e) => e.target.style.transform = "translateY(0)"}
+          onMouseDown={(e) => e.target.style.transform = "translateY(2px) scale(0.95)"}
+          onMouseUp={(e) => e.target.style.transform = "translateY(-5px)"}
+        />
+      </div>
+      
       <h1 className="selection-title">Select Game to Play!</h1>
       
       <div className="floating-container">
@@ -31,6 +51,8 @@ export default function GameSelection() {
         <img src={hillLight} alt="" className="hill-img" />
         <img src={Tree1} alt="" className="tree-img" />
         <img src={Tree2} alt="" className="tree-img-2" />
+        <img src={Tree4} alt="" className="tree-img-4" />
+
       </div>
 
         <div className="cloud-container">
