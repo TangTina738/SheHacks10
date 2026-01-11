@@ -9,7 +9,7 @@
 .hero-wrap {
   position: relative;
   z-index: 2;   
-  padding-bottom: 100px;        
+  padding-bottom: 90px;        
 }
 
 /* hill full width - now occupying space in the flow */
@@ -41,7 +41,7 @@
   font-family: var(--font-display); 
   color: #F4B11A; 
 
-  font-size: clamp(28px, 4vw, 56px);
+  font-size: clamp(24px, 3.5vw, 48px);
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.12);
   display: inline-block;
   animation: titleBounce 3s ease-in-out infinite; /* Keep your bounce animation */
