@@ -2,33 +2,30 @@
 
 .scene {
   position: relative;
-  overflow: hidden;     /* hides cloud overflow cleanly */
+  overflow: hidden;   
   min-height: 100vh;
 }
 
 .hero-wrap {
   position: relative;
-  z-index: 2;           
+  z-index: 2;   
+  padding-bottom: 100px;        
 }
 
-
-/* hill pinned to bottom full width */
+/* hill full width - now occupying space in the flow */
 .hill-wrap {
-  position: absolute;
-  left: 0;
-  bottom: -30vh;
+  position: relative; /* Change from absolute to relative */
   width: 100%;
-  z-index: 0;
+  z-index: 2; /* Sits above the background color, below the text */
+  margin-top: -30vh; /* Keeps it overlapping the sky slightly for the "horizon" look */
+  line-height: 0; /* Prevents tiny gaps at the bottom of images */
 }
+
 .hill-img {
   width: 100%;
   height: auto;
   display: block;
 }
-
-/* sun alignment */
-.sun-wrap { display: flex; justify-content: flex-start; }
-.sun-img  { width: 400px; height: auto; }
 
 /* Content */ 
 .hero-content {
@@ -40,19 +37,258 @@
   text-align: left;
 }
 
- .hero-title { font-family: var(--font-display); 
-    color: #F4B11A; 
-    font-size: clamp(44px, 6vw, 82px);
-     margin: 0 0 12px 0; 
-     text-shadow: 0 10px 0 rgba(0, 0, 0, 0.12); } 
+.hero-title { 
+  font-family: var(--font-display); 
+  color: #F4B11A; 
 
- .hero-text { 
-    font-family: var(--font-primary); 
-    color: #0f0f0f; 
-    font-weight: 800; 
-    line-height: 1.15; 
-    margin: 0;}
+  font-size: clamp(44px, 6vw, 82px);
+  margin: 0 0 12px 0; 
+  text-shadow: 0 5px 0 rgba(0, 0, 0, 0.12);
+  display: inline-block;
+  animation: titleBounce 3s ease-in-out infinite; /* Keep your bounce animation */
+} 
 
-    .hero-col {
-  padding-top: 12vh;  /* tweak 8–14vh until it matches Figma */
+.hero-text { 
+  font-family: var(--font-primary); 
+  color: #ffffff; 
+  font-weight: 800; 
+  line-height: 1.15; 
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.12);
+  margin: 0;
+  /* Increased from clamp(16px, 2vw, 26px) for better readability */
+  font-size: clamp(18px, 2.5vw, 30px);
+}
+    
+
+.hero-col {
+  padding-top: 150px;  /* tweak 8–14vh until it matches Figma */
+}
+
+
+/* Style/Home.css */
+
+.scene {
+  position: relative; /* Required for absolute children to align correctly */
+  overflow: hidden;
+}
+
+.cloud-layer {
+  position: absolute; /* Takes clouds out of the flow so they don't shift text */
+  top: 10%; /* Adjust vertical placement here */
+  left: 0;
+  right: 0;
+  z-index: 1; /* Sits behind the hero content */
+  pointer-events: none; /* Crucial: allows you to click buttons behind the clouds */
+}
+
+.hero-wrap {
+  position: relative;
+  z-index: 2; /* Ensures text and buttons stay on top of clouds */
+}
+/* Position clouds without shifting hero text */
+.scene {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.cloud-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows user to click buttons behind clouds */
+  z-index: 1;
+}
+
+.cloud {
+  position: absolute;
+  height: auto;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1)); /* Matches image shadow style */
+}
+
+/* Specific placements based on your 12-column grid request */
+.cloud-pos-2 { /* Columns 1-2 */
+  width: 15%;
+  left: 5%;
+  top: 40%;
+}
+
+.cloud-pos-1 { /* Columns 2-4 */
+  left: 12%;
+  top: 15%;
+}
+
+.cloud-pos-4 { /* Columns 6-7 */
+
+  left: 45%;
+  top: 40px;;
+}
+
+.cloud-pos-3 { /* Columns 11-12 */
+  width: 15%;
+  right: 5%;
+  top: 25%;
+}
+
+.hero-wrap {
+  position: relative;
+  z-index: 10; /* Keeps text above clouds */
+}
+
+/* Animation for the clouds */
+@keyframes drift {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(15px); }
+  100% { transform: translateX(0); }
+}
+
+.cloud {
+  position: absolute;
+  height: auto;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.08));
+  /* Apply the animation */
+  animation: drift 6s ease-in-out infinite; 
+}
+
+/* Stagger the start times so they don't move in perfect sync */
+.cloud-pos-1 { animation-delay: 0s; }
+.cloud-pos-2 { animation-delay: 1.5s; }
+.cloud-pos-3 { animation-delay: 3s; }
+.cloud-pos-4 { animation-delay: 4.5s; }
+
+
+/* sun alignment */
+.sun-wrap { 
+  padding-top: 20px;
+  display: flex; 
+  justify-content: flex-start; 
+}
+
+.sun-img { 
+  /* Setting width to max-content ensures it uses the image's original width */
+  width: max-content; 
+  height: auto; 
+  cursor: pointer;
+  
+  /* Keep your existing smooth transition for the hover rise effect */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+
+/* Maintain your soft joyful hover effect */
+.sun-img:hover {
+  transform: translateY(-15px) scale(1.02); 
+  filter: drop-shadow(0 0 15px rgba(244, 177, 26, 0.6)); 
+}
+
+/* 3. Press Effect: Slightly shrink when clicked */
+.sun-img:active {
+  transform: translateY(-5px) scale(0.98);
+}
+
+
+
+.about-section {
+  background-color: #3C7A20; /* Dark green */
+  padding: 100px 0;
+  position: relative;
+  z-index: 1; 
+  /* Removing absolute positioning from the hill allows this to sit under it naturally */
+}
+
+/* Container to hide images as they slide out */
+.overflow-hidden {
+  overflow: hidden;
+  padding: 60px 0;
+  width: 100%;
+}
+
+/* Horizontal track logic */
+.card-slider-track {
+  display: flex;
+  align-items: center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Each slot occupies 1/3 of the container width */
+.slider-item {
+  flex: 0 0 33.333%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Prevents images from stretching */
+.card-slider-img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 15px 20px rgba(0,0,0,0.12)); 
+  transition: transform 0.4s ease;
+}
+
+/* Tree Slider Button */
+.btn-tree-slider {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+To create a playful, arrow-like pointing animation for your tree button, you can add a custom @keyframes that moves the button back and forth on the X-axis. This provides a clear visual hint to the student that clicking the tree will move the cards to the right.
+
+1. Updated Home.css
+Add this animation to your CSS file and apply it to the tree-btn-img.
+
+CSS
+
+/* 1. Define the pointing bounce animation */
+@keyframes pointRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(15px); /* Moves slightly to the right */
+  }
+}
+
+.btn-tree-slider {
+  background: none;
+  border: none;
+  padding-top: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* Added a smooth transition for hover states */
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+.tree-btn-img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+  /* 2. Apply the infinite pointing animation */
+  animation: pointRight 1.5s ease-in-out infinite;
+}
+
+/* Pause the bounce when the user hovers so it's easier to click */
+.btn-tree-slider:hover .tree-btn-img {
+  animation-play-state: paused;
+  filter: drop-shadow(0 8px 15px rgba(0,0,0,0.2));
+}
+
+/* Keep your joyful hover/active effects */
+.btn-tree-slider:hover {
+  transform: scale(1.1);
+}
+
+.btn-tree-slider:active {
+  transform: scale(0.9);
 }
