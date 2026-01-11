@@ -24,7 +24,8 @@
   font-weight: 700;
   color: #70BC4F;
   text-decoration: none;
-  margin-top: 6px; /* aligns text with logo top */
+  margin-top: 8px; /* aligns text with logo top */
+  padding-right: 4px;
 }
 
 /* HOMEPAGE pill */
@@ -36,4 +37,37 @@
   padding: 8px 18px;
   border-radius: 999px;
   text-decoration: none;
+}
+
+/* ABOUT link hover */
+.nav-link-custom {
+  /* ... existing styles ... */
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+  display: inline-block; /* Required for transform */
+}
+
+.nav-link-custom:hover {
+  color: #87D8D2; /* Soft teal change */
+  transform: scale(1.1) rotate(-2deg); /* Slight joyful tilt */
+}
+
+/* HOMEPAGE pill hover */
+.btn-homepage {
+  /* ... existing styles ... */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-block;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1); /* Subtle "3D" bottom shadow */
+}
+
+.btn-homepage:hover {
+  background: #FFD32A; /* Brighten the yellow */
+  transform: translateY(-3px) scale(1.05); /* Soft rise */
+  box-shadow: 0 8px 15px rgba(246, 185, 30, 0.3); /* Joyful glow */
+  color: white;
+}
+
+/* Active click effect for both */
+.nav-link-custom:active, 
+.btn-homepage:active {
+  transform: scale(0.95); /* Squish effect when tapped */
 }
