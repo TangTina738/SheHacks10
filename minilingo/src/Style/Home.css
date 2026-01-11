@@ -61,7 +61,7 @@
     
 
 .hero-col {
-  padding-top: 150px;  /* tweak 8–14vh until it matches Figma */
+  padding-top: 90px;  /* tweak 8–14vh until it matches Figma */
 }
 
 
@@ -240,12 +240,7 @@
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-To create a playful, arrow-like pointing animation for your tree button, you can add a custom @keyframes that moves the button back and forth on the X-axis. This provides a clear visual hint to the student that clicking the tree will move the cards to the right.
 
-1. Updated Home.css
-Add this animation to your CSS file and apply it to the tree-btn-img.
-
-CSS
 
 /* 1. Define the pointing bounce animation */
 @keyframes pointRight {

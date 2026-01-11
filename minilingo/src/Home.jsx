@@ -79,7 +79,7 @@ const nextCard = () => {
         </div>
       </div>
 
-      <section className="about-section">
+      <section id="about-section" className="about-section">
         <div className="container overflow-hidden"> 
           <div 
             className="card-slider-track" 
