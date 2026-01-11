@@ -1,6 +1,6 @@
 import "./Style/Nav.css";
 import { NavLink } from "react-router-dom";
-
+import { NavHashLink } from 'react-router-hash-link';
 
 function Nav() {
   return (
@@ -16,12 +16,13 @@ function Nav() {
 
           {/* RIGHT: Nav */}
           <div className="col d-flex justify-content-end align-items-start">
-             <NavLink
-                to="/"
+             <NavHashLink
+                smooth
+                to="/#about-section"
                 className="nav-link-custom me-4"
               >
                 ABOUT
-              </NavLink>
+              </NavHashLink>
               <NavLink
                   to="/"
                   className="btn-homepage"
